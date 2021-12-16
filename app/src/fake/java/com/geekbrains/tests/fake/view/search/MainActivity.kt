@@ -1,4 +1,4 @@
-package com.geekbrains.tests.view.search
+package com.geekbrains.tests.fake.view.search
 
 import android.os.Bundle
 import android.view.View
@@ -16,12 +16,14 @@ import com.geekbrains.tests.repository.GitHubApi
 import com.geekbrains.tests.repository.GitHubRepository
 import com.geekbrains.tests.repository.RepositoryContract
 import com.geekbrains.tests.view.details.DetailsActivity
+import com.geekbrains.tests.view.search.SearchResultAdapter
+import com.geekbrains.tests.view.search.ViewSearchContract
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-class MainActivityFake : AppCompatActivity(), ViewSearchContract {
+class MainActivity : AppCompatActivity(), ViewSearchContract {
 
     private val adapter = SearchResultAdapter()
     private val presenter: PresenterSearchContract = SearchPresenter(this, createRepository())
@@ -56,7 +58,7 @@ class MainActivityFake : AppCompatActivity(), ViewSearchContract {
                     return@OnEditorActionListener true
                 } else {
                     Toast.makeText(
-                        this@MainActivityFake,
+                        this@MainActivity,
                         getString(R.string.enter_search_word),
                         Toast.LENGTH_SHORT
                     ).show()
